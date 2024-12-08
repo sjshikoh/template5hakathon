@@ -2,20 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer utilities {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .wrapper {
+    @apply max-w-7xl mx-4 sm:mx-6 md:mx-8 lg:mx-auto
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  .h1-semibold {
+    @apply text-4xl font-semibold tracking-[4%]
+  }
 }
