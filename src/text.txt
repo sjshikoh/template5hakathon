@@ -1,3 +1,4 @@
+-----navbar--
 'use client'
 import Link from "next/link";
 import React, { useState } from "react";
@@ -25,7 +26,7 @@ const Navbar = () => {
             </button>
             
               <Image src={"/icn shopping-cart .icn-xs.png"} alt="Cart" width={24} height={24} />
-              <Image src={"/Vector (12).png"} alt="User" width={24} height={24} />
+              <Image src={"/vector (12).png"} alt="User" width={24} height={24} />
           
           </div>
 
@@ -34,20 +35,14 @@ const Navbar = () => {
             <Link href="/" className="text-gray-700 hover:text-gray-900">
               Home
             </Link>
-            <Link href="/shop" className="text-gray-700 hover:text-gray-900">
-              Shop
+            <Link href="/product" className="text-gray-700 hover:text-gray-900">
+              Product
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-gray-900">
-              About
-            </Link>
-            <Link href="/blog" className="text-gray-700 hover:text-gray-900">
-              Blog
+            <Link href="/pricing" className="text-gray-700 hover:text-gray-900">
+              Pricing
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-gray-900">
               Contact
-            </Link>
-            <Link href="/pages" className="text-gray-700 hover:text-gray-900">
-              Pages
             </Link>
             
           </nav>
@@ -55,17 +50,17 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="mt-4 text-center text-2xl space-y-4 md:hidden">
-            <Link href="/" className="block text-gray-800 hover:text-gray-900">
+          <nav className="mt-4 space-y-4 md:hidden">
+            <Link href="/" className="block text-gray-700 hover:text-gray-900">
               Home
             </Link>
-            <Link href="/product" className="block text-gray-800 hover:text-gray-900">
+            <Link href="/product" className="block text-gray-700 hover:text-gray-900">
               Product
             </Link>
-            <Link href="/pricing" className="block text-gray-800 hover:text-gray-900">
+            <Link href="/pricing" className="block text-gray-700 hover:text-gray-900">
               Pricing
             </Link>
-            <Link href="/contact" className="block text-gray-800 hover:text-gray-900">
+            <Link href="/contact" className="block text-gray-700 hover:text-gray-900">
               Contact
             </Link>
             
@@ -81,3 +76,17 @@ const Navbar = () => {
 
 export default Navbar;
 
+xxxxxxxxx page.ts xxxxxxxxxxxxxxxxxxx
+import Carosel from "@/components/carosel";
+import Button from "@/components/button";
+import Titlebar from "@/components/Titlebar";
+
+export default function Home() {
+  return (
+    <div>
+      <Carosel />
+      <Button />
+      <Titlebar />
+    </div>
+  );
+}
