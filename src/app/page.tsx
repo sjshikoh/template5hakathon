@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Carosel from '@/components/carosel'
-
-
 import InnerCarosel from '@/components/inner-carrosel';
 
 export default function Home() {
