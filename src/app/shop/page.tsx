@@ -140,7 +140,7 @@ const Shop = () => {
       <h1 className="text-3xl font-bold text-center mb-6">Shop</h1>
       <div className="flex space-x-2">
         <div>Home</div>
-        <div><Image src="/Vector (13).png" alt="" width={7} height={12} /></div>
+        {/* <div><Image src="/Vector (13).png" alt="" width={7} height={12} /></div> */}
         <div>Shop</div>
       </div>
       </div>
