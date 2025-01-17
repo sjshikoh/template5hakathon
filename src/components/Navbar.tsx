@@ -43,6 +43,9 @@ const Navbar = () => {
             <Link href="/blog" className="text-gray-700 hover:text-gray-900">
               Blog
             </Link>
+            <Link href="/pricing" className="text-gray-700 hover:text-gray-900">
+              Pricing
+            </Link>
             <Link href="/contact" className="text-gray-700 hover:text-gray-900">
               Contact
             </Link>
@@ -58,6 +61,9 @@ const Navbar = () => {
           <nav className="mt-4 text-center text-2xl space-y-4 md:hidden">
             <Link href="/" className="block text-gray-800 hover:text-gray-900">
               Home
+            </Link>
+            <Link href="/product" className="block text-gray-800 hover:text-gray-900">
+              Product
             </Link>
             <Link href="/product" className="block text-gray-800 hover:text-gray-900">
               Product

@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react'
+
+
 import Image from "next/image";
 
 interface ICardProps {
@@ -13,24 +15,26 @@ interface ICardProps {
 }
 
 const Card = (props: ICardProps) => { 
- const {image, title, department, price, discountedPrice, rating, showText = true} = props
+ const {image, title, department, price, discountedPrice, rating} = props
   return (
     // <div className={`${Image} `}>
-
-    <div className="w-full xl:w-[238px] h-[615px] flex flex-col">
+    <div>
+    
+    <div className="w-full xl:w-[238px] h-[442px] flex flex-col">
+    
       {/* Image Section */}
       <div className="w-full h-[427px] flex justify-center items-center">
         <Image
           src={image}
           alt={title || "Product"}
-          width={348}
-          height={427}
+          width={239}
+          height={280}
           className="object-cover rounded-lg"
           />
       </div>
 
       {/* Text Section */}
-      <div className="flex flex-col justify-between w-full h-[188px] mt-4 text-center">
+      <div className="flex flex-col justify-between w-full h-[162px] text-center text-xs mb-0">
         <div className="font-medium text-lg">{title}</div>
         <div className="text-gray-500 text-sm">{department}</div>
         <div className="flex items-center justify-center space-x-2 text-sm">
@@ -43,10 +47,11 @@ const Card = (props: ICardProps) => {
             </div>
         )
        }
+
         </div>
        
       </div>
-    // </div>
+     </div>
   );
 };
 
