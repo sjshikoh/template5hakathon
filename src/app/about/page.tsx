@@ -64,6 +64,7 @@ const AboutUs = () => {
                     width={316}
                     height={231}
                   />
+                  
                   <div className="w-full">
                     <h2 className="title-font font-medium text-lg text-gray-900">
                       Alper Kamu

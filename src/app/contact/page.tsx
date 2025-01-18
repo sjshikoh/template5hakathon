@@ -159,9 +159,9 @@ const Contact = () => {
         <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
           <a className="text-indigo-500">example@email.com</a>
           <p className="leading-normal my-5">
-            49 Smith St.
+            49 Abc St.
             <br />
-            Saint Cloud, MN 56301
+            Samr Cloud, MN 56301
           </p>
           
         </div>
