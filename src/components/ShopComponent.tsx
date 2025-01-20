@@ -11,12 +11,28 @@ interface ShopContentProps {
   posts: SanityDocument[];
 }
 
+const POSTS_PER_PAGE = 8;
+
 const ShopContent: React.FC<ShopContentProps> = ({ posts }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+
+  const currentPosts = filteredPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
+  };
 
   return (
     <div className="wrapper w-full my-6">
@@ -33,12 +49,11 @@ const ShopContent: React.FC<ShopContentProps> = ({ posts }) => {
       </div>
 
       <Grid gridCols="md:grid-cols-4">
-        {filteredPosts.length > 0 ? (
-          filteredPosts.map((post) => (
+        {currentPosts.length > 0 ? (
+          currentPosts.map((post) => (
             <Link href={post._id} key={post._id}>
               <Card
-                // key={post._id}
-                image={post.image_url} // Adjust to match your Sanity schema
+                image={post.image_url}
                 title={post.title}
                 price={post.price}
                 discountedPrice={post.price}
@@ -53,6 +68,27 @@ const ShopContent: React.FC<ShopContentProps> = ({ posts }) => {
           </div>
         )}
       </Grid>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-4">
+        <button
+          className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-white rounded-l"
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="px-4 py-2">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-white rounded-r"
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
