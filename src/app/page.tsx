@@ -3,8 +3,13 @@ import Image from "next/image";
 import Carosel from "@/components/carosel";
 import InnerCarosel from "@/components/inner-carrosel";
 import { client } from "@/sanity/lib/client";
+import Products from "@/components/posts";
+import { sanityFetch } from "@/sanity/lib/fetch";
+import { SanityDocument } from "next-sanity";
+import { productList } from "@/sanity/lib/queries";
 
-export default function Home() {
+export default async function Home() {
+  const products = await sanityFetch<SanityDocument[]>({ query: productList });
   return (
     <div>
       <Carosel />
@@ -43,124 +48,11 @@ export default function Home() {
         </div>
 
         {/* Next section */}
-        
 
         {/* Test */}
-        <div className="wrapper mt-60">
+        <div className="wrapper mt-60 px-10">
           {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { img: "/yellowputple.jpg", alt: "yellow and purple design" },
-              { img: "/whitetea.jpg", alt: "white t-shirt" },
-              { img: "/pinkshirt.jpg", alt: "pink shirt" },
-              { img: "/browancoat.jpg", alt: "brown coat" },
-            ].map((product, index) => (
-              <div key={index} className="text-center">
-                {/* Image */}
-                <div className="relative w-full h-[427px]">
-                  <Image
-                    src={product.img}
-                    alt={product.alt}
-                    fill
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-
-                {/* Product Info */}
-                <h1 className="text-lg font-bold text-[#252B42] mt-4">
-                  Graphic Design
-                </h1>
-                <h2 className="text-sm font-bold text-[#737373] mb-2">
-                  English Department
-                </h2>
-
-                {/* Price Section */}
-                <div className="flex justify-center items-center mb-2">
-                  <h2 className="text-sm font-bold text-[#BDBDBD] line-through">
-                    $16.48
-                  </h2>
-                  <div className="w-[5px]"></div>
-                  <h2 className="text-sm font-bold text-[#23856D]">$6.48</h2>
-                </div>
-
-                {/* Color Indicators */}
-                <div className="flex justify-center gap-2">
-                  {[
-                    "/Ellipse 14.png",
-                    "/Ellipse 15.png",
-                    "/Ellipse 16.png",
-                    "/Ellipse 17.png",
-                  ].map((ellipse, idx) => (
-                    <div key={idx} className="relative w-[10px] h-[10px]">
-                      <Image
-                        src={ellipse}
-                        alt={`color indicator ${idx + 1}`}
-                        fill
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="wrapper mt-20">
-          {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { img: "/whiteovercoat.jpg", alt: "yellow and purple design" },
-              { img: "/yellowcoat.jpg", alt: "white t-shirt" },
-              { img: "/americahoodie.jpg", alt: "pink shirt" },
-              { img: "/browancoat.jpg", alt: "brown coat" },
-            ].map((product, index) => (
-              <div key={index} className="text-center">
-                {/* Image */}
-                <div className="relative w-full h-[427px]">
-                  <Image
-                    src={product.img}
-                    alt={product.alt}
-                    fill
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-
-                {/* Product Info */}
-                <h1 className="text-lg font-bold text-[#252B42] mt-4">
-                  Graphic Design
-                </h1>
-                <h2 className="text-sm font-bold text-[#737373] mb-2">
-                  English Department
-                </h2>
-
-                {/* Price Section */}
-                <div className="flex justify-center items-center mb-2">
-                  <h2 className="text-sm font-bold text-[#BDBDBD] line-through">
-                    $16.48
-                  </h2>
-                  <div className="w-[5px]"></div>
-                  <h2 className="text-sm font-bold text-[#23856D]">$6.48</h2>
-                </div>
-
-                {/* Color Indicators */}
-                <div className="flex justify-center gap-2">
-                  {[
-                    "/Ellipse 14.png",
-                    "/Ellipse 15.png",
-                    "/Ellipse 16.png",
-                    "/Ellipse 17.png",
-                  ].map((ellipse, idx) => (
-                    <div key={idx} className="relative w-[10px] h-[10px]">
-                      <Image
-                        src={ellipse}
-                        alt={`color indicator ${idx + 1}`}
-                        fill
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <Products products={products} />
         </div>
         {/* green */}
         {/* <div
