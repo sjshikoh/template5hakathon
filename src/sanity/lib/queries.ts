@@ -10,3 +10,11 @@ price,
 "image_url":productImage.asset->url,
 }
 `;
+
+export const postQuery = groq`*[_type == "product" && _id == $id][0]{ 
+    title, description, "image_url":productImage.asset->url,
+  }`;
+
+export const postPathsQuery = groq`*[_type == "product" && defined(_id)][]{
+    "params": { "_id": _id }
+  }`;

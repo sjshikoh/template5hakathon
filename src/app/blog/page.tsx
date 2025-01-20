@@ -106,8 +106,6 @@ const Blog = () => {
         <p> 🔵🟢🟠🟢</p>
         <div className="flex w-full md:justify-start justify-center items-end">
           <div className="relative  lg:w-full xl:w-1/2 w-2/4">
-           
-             
           <button className="inline-flex text-white text-nowrap bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-8">
           Select Options
           </button>
