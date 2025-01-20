@@ -6,6 +6,7 @@ import Card from "@/components/Card";
 import Search from "@/components/search";
 import { SanityDocument } from "@sanity/client";
 import Link from "next/link";
+import { useCart } from "@/app/context/CartContext";
 
 interface ShopContentProps {
   posts: SanityDocument[];
@@ -16,6 +17,8 @@ const POSTS_PER_PAGE = 8;
 const ShopContent: React.FC<ShopContentProps> = ({ posts }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const { addToCart } = useCart();
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -51,14 +54,30 @@ const ShopContent: React.FC<ShopContentProps> = ({ posts }) => {
       <Grid gridCols="md:grid-cols-4">
         {currentPosts.length > 0 ? (
           currentPosts.map((post) => (
-            <Link href={post._id} key={post._id}>
-              <Card
-                image={post.image_url}
-                title={post.title}
-                price={post.price}
-                discountedPrice={post.price}
-              />
-            </Link>
+            <div key={post._id} className="relative">
+              <Link href={post._id}>
+                <Card
+                  image={post.image_url}
+                  title={post.title}
+                  price={post.price}
+                  discountedPrice={post.price}
+                />
+              </Link>
+              <button
+                className="absolute bottom-2 right-2 px-4 py-2 bg-blue-500 text-white rounded"
+                onClick={() =>
+                  addToCart({
+                    _id: post._id,
+                    name: post.title,
+                    price: post.price,
+                    quantity: 1,
+                    image: post.image_url, // Include image if available
+                  })
+                }
+              >
+                Add to Cart
+              </button>
+            </div>
           ))
         ) : (
           <div className="text-center col-span-4">

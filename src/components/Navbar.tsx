@@ -1,13 +1,20 @@
-'use client'
+"use client";
+
 import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
+import ShoppingCart from "@/components/ShoppingCart"; // Import ShoppingCart component
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showCart, setShowCart] = useState(false); // State to toggle cart visibility
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleCart = () => {
+    setShowCart(!showCart); // Toggle cart visibility
   };
 
   return (
@@ -21,12 +28,13 @@ const Navbar = () => {
           {/* Mobile Hamburger Menu */}
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} aria-label="Toggle menu">
-              <Image src={"/vector (11).png"} alt="Menu" width={24} height={24} />
+              <Image
+                src={"/vector (11).png"}
+                alt="Menu"
+                width={24}
+                height={24}
+              />
             </button>
-            
-              <Image src={"/icn shopping-cart .icn-xs.png"} alt="Cart" width={24} height={24} />
-              <Image src={"/Vector (12).png"} alt="User" width={24} height={24} />
-          
           </div>
 
           {/* Desktop Links */}
@@ -52,38 +60,42 @@ const Navbar = () => {
             <Link href="/pages" className="text-gray-700 hover:text-gray-900">
               Pages
             </Link>
-            
+
+            {/* Cart Button */}
+            <button onClick={toggleCart} className="relative">
+              <Image
+                src={"/icn shopping-cart .icn-xs.png"}
+                alt="Cart"
+                width={24}
+                height={24}
+              />
+              {/* Cart Badge */}
+              <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                3
+              </span>
+            </button>
           </nav>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <nav className="mt-4 text-center text-2xl space-y-4 md:hidden">
-            <Link href="/" className="block text-gray-800 hover:text-gray-900">
-              Home
-            </Link>
-            <Link href="/product" className="block text-gray-800 hover:text-gray-900">
-              Product
-            </Link>
-            <Link href="/product" className="block text-gray-800 hover:text-gray-900">
-              Product
-            </Link>
-            <Link href="/pricing" className="block text-gray-800 hover:text-gray-900">
-              Pricing
-            </Link>
-            <Link href="/contact" className="block text-gray-800 hover:text-gray-900">
-              Contact
-            </Link>
-            
-          </nav>
-        )}
       </header>
+
+      {/* Cart Display */}
+      {showCart && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg max-w-sm w-full relative">
+            <ShoppingCart />
+            <button
+              className="absolute top-2 right-2 text-xl text-gray-600"
+              onClick={toggleCart}
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
 
       <hr className="mt-6" />
     </>
   );
 };
 
-
 export default Navbar;
-
