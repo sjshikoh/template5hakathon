@@ -41,13 +41,13 @@ export default function Footer() {
           <h1 className="text-3xl font-bold">Bandage</h1>
           <div className="flex">
             <div className="relative w-[10px] h-[10px] md:w-[30px] md:h-[30px]">
-              <Image src={"/facebook.png"} alt="facebook" fill />
+              <Image src={"/facebook.png"} alt="facebook" fill sizes="23" />
             </div>
             <div className="relative w-[10px] h-[10px] md:w-[30px] md:h-[30px]">
-              <Image src={"/instagram.png"} alt="insta" fill />
+              <Image src={"/instagram.png"} alt="insta" fill sizes="23" />
             </div>
             <div className="relative w-[10px] h-[10px] md:w-[30px] md:h-[30px]">
-              <Image src={"/twitter.png"} alt="twitter" fill />
+              <Image src={"/twitter.png"} alt="twitter" fill sizes="23" />
             </div>
           </div>
         </div>

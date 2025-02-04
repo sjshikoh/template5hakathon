@@ -8,9 +8,8 @@ const Products = ({ products = [] }: { products: SanityDocument[] }) => {
     products.length === 1 ? `1 post` : `${products.length} posts`;
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        {products.map((product) => (
-          <Link href={product._id}>
+      {products.map((product) => (
+        <Link href={product._id} key={product._id}>
           <div key={product._id}>
             <div className="relative w-full h-[427px]">
               <Image
@@ -57,8 +56,9 @@ const Products = ({ products = [] }: { products: SanityDocument[] }) => {
                 </div>
               ))}
             </div>
-          </div></Link>
-        ))}
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
