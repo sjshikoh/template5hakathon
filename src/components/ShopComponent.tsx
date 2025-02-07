@@ -82,7 +82,7 @@ const ShopContent: React.FC<ShopContentProps> = ({ posts }) => {
         ) : (
           <div className="text-center col-span-4">
             <p className="text-gray-500">
-              No results found for "{searchQuery}"
+              No results found.
             </p>
           </div>
         )}

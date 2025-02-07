@@ -7,10 +7,8 @@ import Products from "@/components/posts";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { SanityDocument } from "next-sanity";
 import { productList } from "@/sanity/lib/queries";
-import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
-  const user = await currentUser();
   const products = await sanityFetch<SanityDocument[]>({ query: productList });
   return (
     <div>

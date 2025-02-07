@@ -1,11 +1,8 @@
-import { product } from "@/sanity/schemaTypes/product";
 import type { SanityDocument } from "@sanity/client";
 import Link from "next/link";
 import Image from "next/image";
 
 const Products = ({ products = [] }: { products: SanityDocument[] }) => {
-  const numberOfProducts =
-    products.length === 1 ? `1 post` : `${products.length} posts`;
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.map((product) => (

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { hostname } from "os";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -6,7 +7,9 @@ const nextConfig: NextConfig = {
 
 module.exports = {
   images: {
+    
     domains: ['cdn.sanity.io'], // Add Sanity's CDN here
+    
   },
 };
 

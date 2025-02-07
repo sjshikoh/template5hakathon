@@ -2,7 +2,6 @@ import { SanityDocument } from "@sanity/client";
 import { postPathsQuery, postQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { client } from "@/sanity/lib/client";
-import Post from "@/components/post";
 import Image from "next/image";
 
 import ProductDiscription from "@/components/product-discription";
@@ -12,7 +11,7 @@ export async function generateStaticParams() {
   return posts;
 }
 
-const PostPage = async ({ params }: { params: any }) => {
+const PostPage = async ({ params }: { params: undefined }) => {
   const post = await sanityFetch<SanityDocument>({ query: postQuery, params });
   console.log(post);
   return (
