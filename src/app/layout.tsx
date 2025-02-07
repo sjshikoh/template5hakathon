@@ -4,7 +4,9 @@ import { Montserrat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/app/context/CartContext";
-import ShoppingCart from "@/components/ShoppingCart"; // Optional: Import the ShoppingCart component
+
+import { ClerkProvider } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,12 +21,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
+
     <html lang="en">
       <body className={`${myFont.className} antialiased`}>
+        <header  className="flex justify-end items-center p-10 gap-4 h-16 text-2xl font-semibold">
+            <SignedOut>
+              <SignInButton />
+             
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+
+        </header>
+       
         <CartProvider>
           {" "}
           {/* Wrap everything inside the CartProvider */}
           <Navbar />
+          
+            
+          
           {children}
           <Footer />
           {/* Optional: Include ShoppingCart here or as part of the Navbar */}
@@ -32,5 +50,6 @@ export default function RootLayout({
         </CartProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
